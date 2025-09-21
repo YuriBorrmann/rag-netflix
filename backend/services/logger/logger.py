@@ -22,14 +22,14 @@ class SimpleLogger:
         elif level == "DEBUG":
             self.logger.debug(message)
             
-    def info(self, message):
+    def info(self, message, exc_info=False):
         self.logger.info(message)
 
-    def warning(self, message):
+    def warning(self, message, exc_info=False):
         self.logger.warning(message)
 
-    def error(self, message):
+    def error(self, message, exc_info=False):
         self.logger.error(message)
 
-    def debug(self, message):
+    def debug(self, message, exc_info=False):
         self.logger.debug(message)
