@@ -1,6 +1,11 @@
 # NexFlix - Chatbot FAQ Netflix 🎬
 
 Um chatbot de FAQ da Netflix construído com RAG (Retrieval Augmented Generation) que utiliza IA para fornecer respostas
+![Exemplo de utilização](nexflix.png)
+
+## Teste o sistema
+
+Acesse o sistema por aqui: [http://34.95.213.130:8501/](http://34.95.213.130:8501/)
 
 ## Arquitetura RAG
 
@@ -72,4 +77,5 @@ streamlit run app.py
 ## Troubleshooting
 
 - **Logs**: Verifique `backend/data/logs/app.log` para diagnóstico
+
 - **Performance da resposta**: Use os expanders na UI para ver os chunks de contexto
