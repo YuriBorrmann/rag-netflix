@@ -14,7 +14,7 @@ class LLMCore:
             temperature=0.2
         )
         return
-    def _build_gemini_prompt(self, question: str, memory:List, context: str) -> str:
+    def _build_gemini_prompt(self, question: str, memory_text:str, context: str) -> str:
         """
         Build a prompt optimized for Google Gemini models.
         
@@ -44,7 +44,7 @@ DOCUMENTOS:
 {context}
 
 ### MEMORY
-{''.join([f"{('User' if m['role']=='user' else 'Assistant')}: {m['content']}\n" for m in memory])}
+{memory_text}
 
 ### USER
 Human: {question}
@@ -57,7 +57,8 @@ Human: {question}
             documents_str = "\n".join([f"Documento {i+1}: {doc}" for i, doc in enumerate(docs)])
         else:
             documents_str = "Nenhum documento encontrado."
-        prompt = self._build_gemini_prompt(question, short_memory, documents_str)
+        memory_text = ''.join([f"{('User' if m['role']=='user' else 'Assistant')}: {m['content']}\n" for m in memory])
+        prompt = self._build_gemini_prompt(question, memory_text, documents_str)
         print("Prompt para Gemini:\n", prompt)
         # Generate response using Google Gemini
         messages = [HumanMessage(content=prompt)]
